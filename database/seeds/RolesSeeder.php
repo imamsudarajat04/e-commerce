@@ -1,6 +1,6 @@
 <?php
 
-use Carbon;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class RolesSeeder extends Seeder
