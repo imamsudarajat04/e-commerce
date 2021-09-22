@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
 
     <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css');</style>
-
+    
 <div class="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
     <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
         <div class="md:flex w-full">
@@ -25,15 +25,18 @@
                     <p>Enter your information to register</p>
                 </div>
                 <div>
-                    <form action="" method="POST">
+                    <form action="{{ route('register.store') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="flex -mx-3">
                             <div class="w-full px-3 mb-5">
                                 <label for="" class="text-xs font-semibold px-1">Nama Lengkap</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                    <input type="text" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Jhon Smith">
+                                    <input type="text" name="nama" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Jhon Smith">
                                 </div>
+                                @if ($errors->has('nama'))
+                                    <span class="text-danger">{{ $errors->first('nama') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="flex -mx-3">
@@ -41,15 +44,21 @@
                                 <label for="" class="text-xs font-semibold px-1">Tempat Lahir</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-google-maps text-gray-400 text-lg"></i></div>
-                                    <input type="text" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="New York">
+                                    <input type="text" name="tempat_lahir" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="New York">
                                 </div>
+                                @if ($errors->has('tempat_lahir'))
+                                    <span class="text-danger">{{ $errors->first('tempat_lahir') }}</span>
+                                @endif
                             </div>
                             <div class="w-1/2 px-3 mb-5">
                                 <label for="" class="text-xs font-semibold px-1">Tanggal Lahir</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-calendar-outline text-gray-400 text-lg"></i></div>
-                                    <input type="date" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Smith">
+                                    <input type="date" name="tanggal_lahir" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Smith">
                                 </div>
+                                @if ($errors->has('tanggal_lahir'))
+                                    <span class="text-danger">{{ $errors->first('tanggal_lahir') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="flex -mx-3">
@@ -57,17 +66,23 @@
                                 <label for="" class="text-xs font-semibold px-1">Email</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
-                                    <input type="email" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="johnsmith@example.com">
+                                    <input type="email" name="email" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="johnsmith@example.com">
                                 </div>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="flex -mx-3">
                             <div class="w-full px-3 mb-12">
-                                <label for="" class="text-xs font-semibold px-1">Passwordd</label>
+                                <label for="" class="text-xs font-semibold px-1">Password</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-lock-outline text-gray-400 text-lg"></i></div>
-                                    <input type="password" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************">
+                                    <input type="password" name="password" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************">
                                 </div>
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="flex -mx-3">
